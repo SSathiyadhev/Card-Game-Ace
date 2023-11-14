@@ -40,4 +40,4 @@ but this code can be used for your persnol use
 
 ## License
 
-[MIT](.LICENSE)
+[MIT](LICENSE)
