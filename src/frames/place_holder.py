@@ -23,7 +23,6 @@ class PlaceHolder:
                                      "Place Holder",
                                      "this is juast a place holder frame",
                                      self.option_lst,
-                                     "please enter a valid input"
                                      )
 
     def show(self):

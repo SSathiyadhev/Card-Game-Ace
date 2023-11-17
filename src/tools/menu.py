@@ -19,11 +19,11 @@ class Menu:
         running(bool): running status of menu
 
     """
-    def __init__(self, name, label, option_lst, inv_opt_text):
-        """
-        initiates the object
-
-        """
+    def __init__(self,
+                 name,
+                 label,
+                 option_lst,inv_opt_text = "please enter valid input..."
+                ):
         self.name = name
         self.label = label
         self.option_lst = option_lst

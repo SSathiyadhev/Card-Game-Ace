@@ -29,8 +29,7 @@ class HomeScreen:
                                      "Card Game: Ace",
                                      "Main Menu",
                                      self.option_lst,
-                                     "please enter a valid input"
-                                     )
+                                    )
 
     def show(self):
         """
@@ -87,6 +86,5 @@ class HomeScreen:
                           ["1", "Yes", self.kill, "exit"],
                           ["2", "No", "exit"]
                          ],
-                         "please enter a valid input..."
                         )
         exit_menu.show()
