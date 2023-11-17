@@ -1,5 +1,6 @@
 from src.frames.home_screen import HomeScreen
 from src.frames.place_holder import PlaceHolder
+from src.frames.new_game_screen import NewGameScreen
 from src.tools.frame_manager import FrameManager
 
 
@@ -11,6 +12,7 @@ class Game:
     def __init__(self):
         self.frame_manager = FrameManager(
                                           HomeScreen(self),
+                                          NewGameScreen(self),
                                           PlaceHolder(self),
                                          )
 
@@ -24,6 +26,7 @@ class Game:
         """
         self.frame_manager.switch_frame(initial_frame_name)
 
+        
 if __name__ == "__main__":
     game = Game()
     game.run("home_screen")

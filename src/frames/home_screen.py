@@ -25,25 +25,25 @@ class HomeScreen:
                            ["4", "Edit Players", self.edit_players],
                            ["5", "Exit", self.exit]
                           ]
-        self.home_screen_menu = Menu(
-                                     "Card Game: Ace",
-                                     "Main Menu",
-                                     self.option_lst,
-                                    )
+        self.menu = Menu(
+                         "Card Game: Ace",
+                         "Main Menu",
+                         self.option_lst,
+                        )
 
     def show(self):
         """
         this function shows the home screen
 
         """
-        self.home_screen_menu.show()
+        self.menu.show()
 
     def kill(self):
         """
         this function stops showing the home screen
 
         """
-        self.home_screen_menu.kill()
+        self.menu.kill()
 
 
     # option methods
@@ -52,7 +52,7 @@ class HomeScreen:
         switches to the new game screen
 
         """
-        self.game.frame_manager.switch_frame("place_holder")
+        self.game.frame_manager.switch_frame("new_game_screen")
 
     def continue_game(self):
         """
