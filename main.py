@@ -1,6 +1,7 @@
 from src.frames.home_screen import HomeScreen
 from src.frames.place_holder import PlaceHolder
 from src.frames.new_game_screen import NewGameScreen
+from src.frames.edit_player_screen import EditPlayerScreen
 from src.tools.frame_manager import FrameManager
 
 
@@ -13,6 +14,7 @@ class Game:
         self.frame_manager = FrameManager(
                                           HomeScreen(self),
                                           NewGameScreen(self),
+                                          EditPlayerScreen(self),
                                           PlaceHolder(self),
                                          )
 

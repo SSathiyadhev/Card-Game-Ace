@@ -73,7 +73,7 @@ class HomeScreen:
         switches to the edit players screen
 
         """
-        self.game.frame_manager.switch_frame("place_holder")
+        self.game.frame_manager.switch_frame("edit_player_screen")
 
     def exit(self):
         """

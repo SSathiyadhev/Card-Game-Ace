@@ -19,7 +19,7 @@ class NewGameScreen:
         self.frame_name = "new_game_screen"
         self.game = game_obj
         self.option_lst = [
-                           ["1", "Edit PLayers",  self.edit_players],
+                           ["1", "Add Player",  self.add_player],
                            ["2", "Exit", self.kill]
                           ]
         self.menu = Menu(
@@ -30,22 +30,22 @@ class NewGameScreen:
         
     def show(self):
         """
-        this function shows the home screen
+        this function shows the new game screen
 
         """
         self.menu.show()
 
     def kill(self):
         """
-        this function stops showing the home screen
+        this function stops showing the new game screen
 
         """
         self.menu.kill()
     
     # option methods
-    def edit_players(self):
+    def add_player(self):
         """
-        switches to the continue game screen
+        switches to the add player screen
 
         """
         self.game.frame_manager.switch_frame("place_holder")
