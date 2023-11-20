@@ -3,7 +3,8 @@ from src.tools.menu import Menu
 
 class PlaceHolder:
     """
-    this class defines the home screen of the application
+    this class defines the place holder, this screen is shown if
+    the actual screen is not created
 
     Attributes:
         game(game object): game object in which the frame is a part
@@ -18,7 +19,7 @@ class PlaceHolder:
     def __init__(self, game):
         self.frame_name = "place_holder"
         self.game = game
-        self.option_lst = [["1", "Exit", self.kill]]
+        self.option_lst = [["1", "Go back", self.kill]]
         self.menu = Menu(
                          "Place Holder",
                          "this is juast a place holder frame",

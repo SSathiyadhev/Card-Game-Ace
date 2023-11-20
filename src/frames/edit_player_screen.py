@@ -3,7 +3,8 @@ from src.tools.menu import Menu
 
 class EditPlayerScreen:
     """
-    this class defines the home screen of the application
+    this class defines the edit player screen 
+    of the application
 
     Attributes:
         frame_name(str): name of the frame
@@ -22,7 +23,7 @@ class EditPlayerScreen:
                            ["1", "Edit Existing Player",
                             self.edit_existing_player],
                            ["2", "Add new player", self.add_new_player],
-                           ["3", "Exit", self.kill]
+                           ["3", "Go back", self.kill]
                           ]
         self.menu = Menu(
                          "Edit Player",
@@ -54,7 +55,7 @@ class EditPlayerScreen:
 
     def add_new_player(self):
         """
-        switches to the continue new player screen
+        switches to the add new player screen
 
         """
-        self.game.frame_manager.switch_frame("place_holder")
+        self.game.frame_manager.switch_frame("add_new_player_screen")

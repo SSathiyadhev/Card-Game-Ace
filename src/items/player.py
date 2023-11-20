@@ -24,8 +24,6 @@ class Player:
         self.total_games_lost = 0
         self.cards_in_hand = Pile()
 
-        self.add_player()
-
     def reset_account(self):
         """
         this method resets the account

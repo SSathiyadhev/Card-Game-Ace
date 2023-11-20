@@ -20,7 +20,7 @@ class NewGameScreen:
         self.game = game_obj
         self.option_lst = [
                            ["1", "Add Player",  self.add_player],
-                           ["2", "Exit", self.kill]
+                           ["2", "Go back", self.kill]
                           ]
         self.menu = Menu(
                          "New Game",
@@ -48,4 +48,4 @@ class NewGameScreen:
         switches to the add player screen
 
         """
-        self.game.frame_manager.switch_frame("place_holder")
+        self.game.frame_manager.switch_frame("add_new_player_screen")
