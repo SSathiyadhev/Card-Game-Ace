@@ -22,11 +22,12 @@ class BackEnd:
             file = open(file_path, "ab")
         except FileNotFoundError:
             file = open(file_path, "wb")
-        
+
         pickle.dump(data, file)
 
         file.close()
 
+    @staticmethod
     def get_all_data(file_path):
         """
         this method returns all the data in the file
@@ -39,20 +40,19 @@ class BackEnd:
                 if unable to do then returns a string saying so
 
         """
-        data_Set = []
+        data_set = []
         try:
             file = open(file_path, "rb")
 
             while True:
                 try:
                     data = pickle.load(file)
-                    data_Set.append(data)
+                    data_set.append(data)
                 except EOFError:
                     file.close()
                     break
 
         except FileNotFoundError:
             return "file not found"
-        
-        return data_Set
-    
+
+        return data_set

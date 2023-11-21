@@ -28,16 +28,18 @@ class AddNewPlayerScreen:
         saves it in saved_player file
 
         """
-        print("Add New Player Menu")
-        user_name = input("enter player name:")
+        print("Add New Player")
+        while True:
+            user_name = input("enter player name:")
 
-        if GenFunc.player_alrady_exist(user_name):
-            print()
-            print("Player name alrady used, Try another name")
-        else:
-            new_player = Player(user_name)
-            BackEnd.add_data(new_player, ".//user_data//saved_players.dat")
-            print("Player Added Successfully")
+            if GenFunc.player_alrady_exist(user_name):
+                print()
+                print("Player name alrady used, Try another name")
+            else:
+                new_player = Player(user_name)
+                BackEnd.add_data(new_player, ".//user_data//saved_players.dat")
+                print("Player Added Successfully")
+                break
 
     def show(self):
         """

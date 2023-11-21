@@ -30,7 +30,7 @@ class Game:
         """
         self.frame_manager.switch_frame(initial_frame_name)
 
-        
+
 if __name__ == "__main__":
     game = Game()
     game.run("home_screen")
