@@ -20,17 +20,21 @@ class EditPlayerScreen:
         self.frame_name = "edit_player_screen"
         self.game = game_obj
         self.option_lst = [
-                           ["1", "Edit Existing Player",
-                            self.edit_existing_player],
-                           ["2", "Add new player", self.add_new_player],
-                           ["3", "Go back", self.kill]
+                           ["1", "Change Player Name",
+                            self.change_player_name],
+                           ["2", "Reset Player Account",
+                            self.resert_player_account],
+                           ["3", "Delete Player Account",
+                            self.delete_player_account],
+                           ["4", "Add new player", self.add_new_player],
+                           ["5", "Go back", self.kill]
                           ]
         self.menu = Menu(
                          "Edit Player",
                          "What do you want to do?",
                          self.option_lst,
                         )
-        
+
     def show(self):
         """
         this function shows the edit player screen
@@ -46,9 +50,23 @@ class EditPlayerScreen:
         self.menu.kill()
 
     # option methods
-    def edit_existing_player(self):
+    def change_player_name(self):
         """
-        switches to the edit existing player screen
+        switches to the change player name screen
+
+        """
+        self.game.frame_manager.switch_frame("place_holder")
+
+    def resert_player_account(self):
+        """
+        switches to the reset player screen screen
+
+        """
+        self.game.frame_manager.switch_frame("place_holder")
+
+    def delete_player_account(self):
+        """
+        switches to the delete player account screen
 
         """
         self.game.frame_manager.switch_frame("place_holder")

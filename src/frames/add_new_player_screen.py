@@ -1,6 +1,7 @@
 from src.items.player import Player
 from src.tools.menu import Menu
 from src.tools.back_end import BackEnd
+from src.tools.general_functions import GenFunc
 
 
 class AddNewPlayerScreen:
@@ -30,33 +31,13 @@ class AddNewPlayerScreen:
         print("Add New Player Menu")
         user_name = input("enter player name:")
 
-        if self.player_alrady_exist(user_name):
+        if GenFunc.player_alrady_exist(user_name):
             print()
             print("Player name alrady used, Try another name")
         else:
             new_player = Player(user_name)
             BackEnd.add_data(new_player, ".//user_data//saved_players.dat")
             print("Player Added Successfully")
-
-    def player_alrady_exist(self, new_player_name):
-        """
-        checks if the entered player name alrady exist
-
-        arg:
-            new_player_name(str): player name to check for
-
-        returns:
-            (bool): true if entred player name is exist in the file
-
-        """
-
-        players = BackEnd.get_all_data(".//user_data//saved_players.dat")
-
-        for player in players:
-            if player.name == new_player_name:
-                return True
-            else:
-                return False
 
     def show(self):
         """
