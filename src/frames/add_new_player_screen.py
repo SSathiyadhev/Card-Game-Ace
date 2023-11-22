@@ -2,6 +2,7 @@ from src.items.player import Player
 from src.tools.menu import Menu
 from src.tools.back_end import BackEnd
 from src.tools.general_functions import GenFunc
+from src.tools.constants import Constants
 
 
 class AddNewPlayerScreen:
@@ -21,6 +22,7 @@ class AddNewPlayerScreen:
         self.frame_name = "add_new_player_screen"
         self.game = game_obj
         self.running = False
+        self.player_added = False
     
     def get_player_name(self):
         """
@@ -29,16 +31,18 @@ class AddNewPlayerScreen:
 
         """
         print("Add New Player")
+        self.player_added = False
         while True:
             user_name = input("enter player name:")
 
             if GenFunc.player_alrady_exist(user_name):
-                print()
+                GenFunc.clear_terminal()
                 print("Player name alrady used, Try another name")
             else:
                 new_player = Player(user_name)
-                BackEnd.add_data(new_player, ".//user_data//saved_players.dat")
-                print("Player Added Successfully")
+                BackEnd.add_data(new_player, Constants.SAVED_PLAYERS_FOLDER)
+                print()
+                self.player_added = True
                 break
 
     def show(self):
@@ -46,11 +50,15 @@ class AddNewPlayerScreen:
         this function shows the add new player screen
 
         """
+        GenFunc.clear_terminal()
         self.running = True
         while self.running:
             self.get_player_name()
-
-            msg_box = Menu("",
+            if self.player_added:
+                message = "Player Added Successfully"
+            else:
+                message = ""
+            msg_box = Menu(message,
                            "Do You want add another player?",
                            [
                             ["1", "Yes", "exit"],
@@ -65,3 +73,4 @@ class AddNewPlayerScreen:
 
         """
         self.running = False
+        GenFunc.clear_terminal()

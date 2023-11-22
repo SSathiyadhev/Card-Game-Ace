@@ -1,3 +1,6 @@
+from src.tools.general_functions import GenFunc
+
+
 class Menu:
     """
     a class used to create menu
@@ -69,14 +72,15 @@ class Menu:
                         arg[2]()
                 break
         else: # if no option matched
+            GenFunc.clear_terminal()
             print(self.inv_opt_text)
-            print()# for space
 
     def show(self):
         """
         this method shows the menu in the screen
 
         """
+        GenFunc.clear_terminal()
         self.running = True
         while self.running:
             resp = self.get_response()
@@ -88,6 +92,7 @@ class Menu:
 
         """
         self.running = False
+        GenFunc.clear_terminal()
 
     def add_option(self, new_option):
         """

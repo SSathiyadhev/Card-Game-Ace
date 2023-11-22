@@ -1,4 +1,7 @@
+import os
+
 from src.tools.back_end import BackEnd
+from src.tools.constants import Constants
 
 
 class GenFunc:
@@ -21,7 +24,7 @@ class GenFunc:
 
         """
 
-        players = BackEnd.get_all_data(".//user_data//saved_players.dat")
+        players = BackEnd.get_all_data(Constants.SAVED_PLAYERS_FOLDER)
         found = False
         if players == "file not found":
             pass
@@ -32,3 +35,11 @@ class GenFunc:
                     break
 
         return found
+
+    @staticmethod
+    def clear_terminal():
+        """
+        a method used to clear terminal
+
+        """
+        os.system("clear")
