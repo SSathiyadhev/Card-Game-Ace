@@ -24,6 +24,9 @@ class Player:
         self.total_games_lost = 0
         self.cards_in_hand = Pile()
 
+    def __eq__(self, __value: object) -> bool:
+        return self.name == __value.name
+
     def reset_account(self):
         """
         this method resets the account

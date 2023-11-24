@@ -99,7 +99,16 @@ class BackEnd:
             file_path(str): the file in which data should be deleted
         """
         data_lst = BackEnd.get_all_data(file_path)
-        data_lst.remove(data)
+
+        for dat in list(data_lst): # itrating through copy of list
+            print(vars(dat))
+            print(vars(data))
+            if dat == data:
+                data_lst.remove(dat)
+                print("success")
+                break
+        BackEnd.remove_all_data(file_path)
+        BackEnd.add_data(data_lst, file_path)
 
     @staticmethod
     def remove_all_data(file_path):

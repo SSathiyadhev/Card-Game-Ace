@@ -58,11 +58,11 @@ class AddNewPlayerScreen:
                 message = "Player Added Successfully"
             else:
                 message = ""
-            msg_box = Menu(message,
-                           "Do You want add another player?",
+            msg_box = Menu(
+                           "",
+                           message,
                            [
-                            ["1", "Yes", "exit"],
-                            ["2", "No", self.kill, "exit"]
+                            ["1", "Ok", self.kill, "exit"]
                            ],
                           )
             msg_box.show()

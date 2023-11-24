@@ -69,7 +69,7 @@ class EditPlayerScreen:
         switches to the delete player account screen
 
         """
-        self.game.frame_manager.switch_frame("place_holder")
+        self.game.frame_manager.switch_frame("delete_account_screen")
 
     def add_new_player(self):
         """
