@@ -3,6 +3,7 @@ from src.frames.place_holder import PlaceHolder
 from src.frames.new_game_screen import NewGameScreen
 from src.frames.edit_player_screen import EditPlayerScreen
 from src.frames.add_new_player_screen import AddNewPlayerScreen
+from src.frames.change_name_screen import ChangeNameScreen
 from src.tools.frame_manager import FrameManager
 
 
@@ -17,6 +18,7 @@ class Game:
                                           NewGameScreen(self),
                                           EditPlayerScreen(self),
                                           AddNewPlayerScreen(self),
+                                          ChangeNameScreen(self),
                                           PlaceHolder(self),
                                          )
 

@@ -14,6 +14,7 @@ class BackEnd:
 
         arg:
             data(any obj): the data which should be appanded in the file
+                if multiple data pass as list
 
             file_path(str): the file in which data should be entred
 
@@ -23,7 +24,13 @@ class BackEnd:
         except FileNotFoundError:
             file = open(file_path, "wb")
 
-        pickle.dump(data, file)
+        if type(data) is list:
+
+            for dat in data:
+                pickle.dump(dat, file)
+
+        else:
+            pickle.dump(data, file)
 
         file.close()
 
@@ -53,6 +60,55 @@ class BackEnd:
                     break
 
         except FileNotFoundError:
-            return "file not found"
+            return []
 
         return data_set
+
+    @staticmethod
+    def edit_data(field_search, search_data, field_change,
+                  change_data,  file_path):
+        """
+        this function used to replaces old data with new data in file 
+        in given path
+
+        """
+        data = BackEnd.get_all_data(file_path)
+        found = False
+
+        for dat in data:
+            obj_attr_dict = vars(dat)
+            for attr in obj_attr_dict:
+                if attr == field_search and obj_attr_dict[attr] == search_data:
+                    obj_attr_dict[field_change] = change_data
+                    BackEnd.remove_all_data(file_path)
+                    BackEnd.add_data(data, file_path)
+                    found = True
+            if found:
+                break
+        else:
+            print("no data found matching your search")
+
+    @staticmethod
+    def remove_data(data, file_path):
+        """
+        this method removes given data
+
+        arg:
+            data(any obj): the data to be deleted
+
+            file_path(str): the file in which data should be deleted
+        """
+        data_lst = BackEnd.get_all_data(file_path)
+        data_lst.remove(data)
+
+    @staticmethod
+    def remove_all_data(file_path):
+        """
+        remove all data from file
+
+        arg:
+            file_path(str): the file in which data should be deleted
+
+        """
+        file = open(file_path, "wb")
+        file.close()

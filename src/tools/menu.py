@@ -94,17 +94,17 @@ class Menu:
         self.running = False
         GenFunc.clear_terminal()
 
-    def add_option(self, new_option):
+    def add_option(self, new_option_lst):
         """
         this method used to update option list
 
         arg:
-            new_opt_lis(list): new option  in frmate
+            new_opt_lis(list): list of new option  in formate
             [opt_no(str), opt_text(str), opt_func(fuc), "exit"]
             last element optional
 
         """
-        self.option_lst.append(new_option)
+        self.option_lst = new_option_lst
 
     def change_label(self, new_label_text):
         """

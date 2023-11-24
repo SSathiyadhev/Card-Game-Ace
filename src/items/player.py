@@ -53,13 +53,3 @@ class Player:
 
         """
         self.total_games_lost += 1
-
-    def edit_name(self, new_name):
-        """
-        this method changes the name of player
-
-        arg:
-            new_name(str): the new name to be changed
-
-        """
-        self.name = new_name

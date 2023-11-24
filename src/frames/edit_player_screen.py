@@ -55,7 +55,7 @@ class EditPlayerScreen:
         switches to the change player name screen
 
         """
-        self.game.frame_manager.switch_frame("place_holder")
+        self.game.frame_manager.switch_frame("change_name_screen")
 
     def resert_player_account(self):
         """

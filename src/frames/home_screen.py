@@ -12,7 +12,7 @@ class HomeScreen:
 
         option_lst(list): list containing options for menu object
 
-        home_screen_menu(Menu): menu for the home screen
+        menu(Menu): menu for the home screen
 
     """
     def __init__(self, game_obj):
