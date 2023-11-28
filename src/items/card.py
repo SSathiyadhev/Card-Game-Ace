@@ -5,8 +5,11 @@ class Card:
     """
     def __init__(self, card_name):
         self.name = card_name
-        self.suit = self.name[1]
-        self.number = self.name[0]
+        self.suit = self.name[-1]
+        if self.name[0] == "1":
+            self.number = "10"
+        else:
+            self.number = self.name[0]
 
     def __eq__(self, __value):
         return self.name == __value.name
@@ -27,11 +30,11 @@ class Card:
                 else:
                     return False
             else:
-                if self.suit =="S":
+                if self.suit == "S":
                     return True
-                elif self.suit =="C" and __value.suit not in ["S"]:
+                elif self.suit == "C" and __value.suit not in ["S"]:
                     return True
-                elif self.suit =="H" and __value.suit not in ["S", "c"]:
+                elif self.suit == "H" and __value.suit not in ["S", "C"]:
                     return True
                 else:
                     return False
@@ -39,4 +42,4 @@ class Card:
             return False
 
     def __lt__(self, __value):
-        return not self.name > __value.name
+        return (not (self > __value)) and (self != __value)

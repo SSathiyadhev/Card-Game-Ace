@@ -22,7 +22,7 @@ class Player:
         self.total_games_played = 0
         self.total_games_own = 0
         self.total_games_lost = 0
-        self.cards_in_hand = Pile()
+        self.cards_in_hand = Pile(self.name+"cards", True)
 
     def __eq__(self, __value: object) -> bool:
         return self.name == __value.name
