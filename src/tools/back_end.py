@@ -101,8 +101,6 @@ class BackEnd:
         data_lst = BackEnd.get_all_data(file_path)
 
         for dat in list(data_lst): # itrating through copy of list
-            print(vars(dat))
-            print(vars(data))
             if dat == data:
                 data_lst.remove(dat)
                 break
