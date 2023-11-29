@@ -105,7 +105,6 @@ class BackEnd:
             print(vars(data))
             if dat == data:
                 data_lst.remove(dat)
-                print("success")
                 break
         BackEnd.remove_all_data(file_path)
         BackEnd.add_data(data_lst, file_path)
