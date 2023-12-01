@@ -65,6 +65,7 @@ class GenFunc:
 
         arg:
             lst(list): player list to cretae option
+
             func(function): to connect each option with this function
                 and pass each element as argument
 
@@ -79,3 +80,40 @@ class GenFunc:
             option_list.append(option)
 
         return option_list
+    
+    @staticmethod
+    def list_sub(lst1, lst2):
+        """
+        this function subtracts lst2 from lit1 returns none changes lst1
+
+        arg:
+            lst1(list): list from which lst2 to be subtracted
+
+            lst2(list): list to be subtracted
+
+        """
+        for i in lst1.copy():
+            if i in lst2:
+                lst1.remove(i)
+
+    @staticmethod
+    def curser_move_by(ln, col):
+        """
+        move cursor by said value
+
+        arg:
+            ln(int): no of line to move if +ve then move up by given no
+                if -ve move down by specified ammount
+
+            col(int): no of column to move if +ve then move right by given no
+                if -ve move left by specified ammount
+        """
+        if ln>0:
+            print("\033[A"*ln, end="")
+        else:
+            print("\033[B"*-(ln), end="")
+
+        if col>0:
+            print("\033[C"*col, end="")
+        else:
+            print("\033[D"*-(col), end="")

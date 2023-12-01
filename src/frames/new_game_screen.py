@@ -1,4 +1,7 @@
 from src.tools.menu import Menu
+from src.tools.back_end import BackEnd
+from src.tools.constants import Constants
+from src.tools.general_functions import GenFunc
 
 
 class NewGameScreen:
@@ -18,21 +21,71 @@ class NewGameScreen:
     def __init__(self, game_obj):
         self.frame_name = "new_game_screen"
         self.game = game_obj
-        self.option_lst = [
-                           ["1", "Add Player",  self.add_player],
-                           ["2", "Go back", self.kill]
-                          ]
+        self.player_lst = [] # value is updated when show function is called
+        self.option_lst = [] # value is updated when show function is called
+        self.added_players = []
         self.menu = Menu(
                          "New Game",
                          "",
-                         self.option_lst,
+                         self.option_lst
                         )
-        
+    
+    def update_screen(self):
+        """
+        updates the screen
+
+        """
+        GenFunc.clear_terminal()
+        self.update_options()
+        self.update_label()
+
+    def update_options(self):
+        """
+        this function updates the option_list of this screen
+
+        """
+        self.player_lst = BackEnd.get_all_data(Constants.SAVED_PLAYERS_FOLDER)
+        GenFunc.list_sub(self.player_lst, self.added_players)
+        self.option_lst = GenFunc.list_option_maker(
+                                                    self.player_lst,
+                                                    self.add_to_game
+                                                   )+[[str(len(self.player_lst)+1),
+                                                      "Add New Player", self.add_new_player],
+                                                      [str(len(self.player_lst)+2),
+                                                      "Done", self.done],
+                                                      [str(len(self.player_lst)+3),
+                                                      "Go Back", self.kill]
+                                                     ]
+        self.menu.add_option(self.option_lst)
+
+    def update_label(self):
+        """
+        updates the label of this screen
+
+        """
+        if not self.player_lst: # checks if empty list
+            self.menu.change_label(
+                "No Players Found, First Add Players From Add Players option"
+                )
+        else:
+            menu_label = "player selected:"
+            if not self.added_players:
+                menu_label += "No players selected"
+            else:
+                for player in self.added_players:
+                    if self.added_players[-1] == player:
+                        menu_label += player.name + "."
+                    else:
+                        menu_label += player.name + ", "
+            self.menu.change_label(menu_label+"\nSelect player to add")
+
     def show(self):
         """
         this function shows the new game screen
 
         """
+        self.added_players = []
+        self.update_screen()
         self.menu.show()
 
     def kill(self):
@@ -41,11 +94,30 @@ class NewGameScreen:
 
         """
         self.menu.kill()
-    
+
     # option methods
-    def add_player(self):
+    def add_to_game(self, player):
         """
-        switches to the add player screen
+        add the plyer pssed as argument to game
+
+        arg:
+            player(player obj): player to be added to added_player
+
+        """
+        self.added_players.append(player)
+        self.update_screen()
+
+    def add_new_player(self):
+        """
+        switches to the add new player screen
 
         """
         self.game.frame_manager.switch_frame("add_new_player_screen")
+        self.update_screen()
+
+    def done(self):
+        """
+        not decided yet
+
+        """
+        self.update_screen()
