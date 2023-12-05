@@ -45,7 +45,6 @@ class NewGameScreen:
 
         """
         self.player_lst = BackEnd.get_all_data(Constants.SAVED_PLAYERS_FOLDER)
-        GenFunc.list_sub(self.player_lst, self.added_players)
         self.option_lst = GenFunc.list_option_maker(
                                                     self.player_lst,
                                                     self.add_to_game
@@ -77,7 +76,7 @@ class NewGameScreen:
                         menu_label += player.name + "."
                     else:
                         menu_label += player.name + ", "
-            self.menu.change_label(menu_label+"\nSelect player to add")
+            self.menu.change_label(menu_label+"\nSelect player to add or remove if alrady selected")
 
     def show(self):
         """
@@ -98,13 +97,18 @@ class NewGameScreen:
     # option methods
     def add_to_game(self, player):
         """
-        add the plyer pssed as argument to game
+        add the plyer pssed as argument to game if not in game,
+        or remove is alrady in game
 
         arg:
             player(player obj): player to be added to added_player
 
         """
-        self.added_players.append(player)
+        if player not in self.added_players:
+            self.added_players.append(player)
+        else:
+            self.added_players.remove(player)
+
         self.update_screen()
 
     def add_new_player(self):
@@ -120,4 +124,4 @@ class NewGameScreen:
         not decided yet
 
         """
-        self.update_screen()
+        self.game.frame_manager.switch_frame("place_holder")
