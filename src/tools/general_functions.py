@@ -56,7 +56,7 @@ class GenFunc:
             (function): lambda function which calls func(arg)
         """
         return lambda: func(arg)
-    
+
     @staticmethod
     def list_option_maker(lst, func):
         """
@@ -80,7 +80,7 @@ class GenFunc:
             option_list.append(option)
 
         return option_list
-    
+
     @staticmethod
     def list_sub(lst1, lst2):
         """
@@ -117,3 +117,24 @@ class GenFunc:
             print("\033[C"*col, end="")
         else:
             print("\033[D"*-(col), end="")
+
+    @staticmethod
+    def add_lst_str(string, lst):
+        """
+        this function adds the strings in the list to given string
+
+        arg:
+            string(str): the string to witch list string tyo be added
+
+            lst(list(str)): list with string that to be added to string
+
+        returns:
+            (srt): modifided string
+
+        """
+        for st in lst:
+            if lst[-1] == st:
+                string += st + "."
+            else:
+                string += st + ", "
+        return string

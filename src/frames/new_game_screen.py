@@ -71,11 +71,8 @@ class NewGameScreen:
             if not self.added_players:
                 menu_label += "No players selected"
             else:
-                for player in self.added_players:
-                    if self.added_players[-1] == player:
-                        menu_label += player.name + "."
-                    else:
-                        menu_label += player.name + ", "
+                menu_label = GenFunc.add_lst_str(menu_label,
+                                                 [player.name for player in self.added_players])
             self.menu.change_label(menu_label+"\nSelect player to add or remove if alrady selected")
 
     def show(self):
@@ -121,7 +118,29 @@ class NewGameScreen:
 
     def done(self):
         """
-        not decided yet
+        takes to conformation page and to the game
 
         """
-        self.game.frame_manager.switch_frame("place_holder")
+        if len(self.added_players) < 4:
+            msg_box = Menu("",
+                           "Minimum Players is 4 please add 4 players to start",
+                           [
+                            ["1", "Ok", "exit"]
+                           ]
+                          )
+            msg_box.show()
+        else:
+            lable_text = "selected players:"
+            lable_text = GenFunc.add_lst_str(lable_text,
+                                             [player.name for player in self.added_players])
+            lable_text += "\nDo you want to continue"
+            msg_box = Menu("Conformation",
+                           lable_text,
+                           [
+                            ["1", "Continue",
+                             lambda:self.game.frame_manager.switch_frame("place_holder"),
+                             "exit"],
+                            ["2", "Go Back", "exit"]
+                           ],
+                          )
+            msg_box.show()
