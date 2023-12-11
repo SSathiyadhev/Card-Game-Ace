@@ -1,4 +1,6 @@
 from src.items.pile import Pile
+from src.tools.back_end import BackEnd
+from src.tools.constants import Constants
 
 
 class Player:
@@ -26,6 +28,24 @@ class Player:
 
     def __eq__(self, __value: object) -> bool:
         return self.name == __value.name
+    
+    def delete_account(self):
+        """
+        this method deletes the player account
+
+        """
+        BackEnd.remove_data(self, Constants.SAVED_PLAYERS_FOLDER)
+
+    def change_name(self, new_name):
+        """
+        this method changes name of the account to the passed name
+
+        arg:
+            new_name(str): this is the new name for the account
+            
+        """
+        BackEnd.edit_data("name", self.name, "name",
+                          new_name, Constants.SAVED_PLAYERS_FOLDER)
 
     def reset_account(self):
         """

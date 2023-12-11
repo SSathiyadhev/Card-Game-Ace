@@ -86,8 +86,7 @@ class ChangeNameScreen:
             else:
                 break
 
-        BackEnd.edit_data("name", player.name, "name",
-                          new_name, Constants.SAVED_PLAYERS_FOLDER)
+        player.change_name(new_name)
 
         msg_box = Menu("",
                        "Changed Successfully",

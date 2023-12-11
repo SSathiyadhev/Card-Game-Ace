@@ -88,7 +88,7 @@ class DeleteAccountScreen:
         delete_conformation_menu.show()
 
         if delete:
-            BackEnd.remove_data(player, Constants.SAVED_PLAYERS_FOLDER)
+            player.delete_account()
             msg_box = Menu("",
                            "Deleted Successfully",
                            [
