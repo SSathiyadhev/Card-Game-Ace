@@ -96,3 +96,20 @@ class Pile:
 
         if desc:
             self.cards = self.cards[::-1]
+
+    def is_card_in_suit(self, suit):
+        """
+        checks if there is a card in given suit
+        
+        arg:
+            suit(str): suit to be checked
+
+        returns:
+            bool: true of card of given suit exist else false
+        """
+        found = False
+        for card in self.cards:
+            if card.suit == suit:
+                found = True
+                break
+        return found  

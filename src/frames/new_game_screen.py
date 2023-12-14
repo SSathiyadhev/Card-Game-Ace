@@ -55,7 +55,7 @@ class NewGameScreen:
                                                       [str(len(self.player_lst)+3),
                                                       "Go Back", self.kill]
                                                      ]
-        self.menu.add_option(self.option_lst)
+        self.menu.change_option(self.option_lst)
 
     def update_label(self):
         """

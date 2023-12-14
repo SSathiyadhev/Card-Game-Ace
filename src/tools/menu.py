@@ -25,7 +25,8 @@ class Menu:
     def __init__(self,
                  name,
                  label,
-                 option_lst,inv_opt_text = "please enter valid input..."
+                 option_lst,
+                 inv_opt_text = "please enter valid input..."
                 ):
         self.name = name
         self.label = label
@@ -94,7 +95,17 @@ class Menu:
         self.running = False
         GenFunc.clear_terminal()
 
-    def add_option(self, new_option_lst):
+    def change_name(self, new_name):
+        """
+        this method used to cahnge menu name
+
+        arg:
+            new_name(list): new name to be changed
+
+        """
+        self.name = new_name
+
+    def change_option(self, new_option_lst):
         """
         this method used to update option list
 
@@ -115,3 +126,13 @@ class Menu:
 
         """
         self.label = new_label_text
+
+    def change_inv_opt_txt(self, new_inv_opt_text):
+        """
+        this function changes the invalid option text
+
+        arg:
+            new_inv_opt_text(str): new invalid option text
+
+        """
+        self.inv_opt_text = new_inv_opt_text

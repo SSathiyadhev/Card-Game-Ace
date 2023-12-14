@@ -42,7 +42,7 @@ class DeleteAccountScreen:
                                                     self.delete_account
                                                    )+[[str(len(self.player_lst)+1),
                                                       "Go Back", self.kill]]
-        self.menu.add_option(self.option_lst)
+        self.menu.change_option(self.option_lst)
 
     def show(self):
         """

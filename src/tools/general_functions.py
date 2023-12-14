@@ -1,5 +1,4 @@
 import os
-
 from src.tools.back_end import BackEnd
 from src.tools.constants import Constants
 
@@ -42,7 +41,7 @@ class GenFunc:
         os.system("clear")
 
     @staticmethod
-    def partial(func, arg):
+    def partial(func, *args):
         """
         this method uced to pass a function as an argument for that function
         to call later
@@ -55,10 +54,10 @@ class GenFunc:
         returns:
             (function): lambda function which calls func(arg)
         """
-        return lambda: func(arg)
+        return lambda: func(*args)
 
     @staticmethod
-    def list_option_maker(lst, func):
+    def list_option_maker(lst, func, *args):
         """
         this function crates option lisst for menu from  list with
         given function
@@ -76,7 +75,7 @@ class GenFunc:
         option_list = []
 
         for ele in lst:
-            option = [str(lst.index(ele)+1), ele.name, GenFunc.partial(func,ele)]
+            option = [str(lst.index(ele)+1), ele.name, GenFunc.partial(func, ele, *args)]
             option_list.append(option)
 
         return option_list

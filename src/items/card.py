@@ -43,3 +43,12 @@ class Card:
 
     def __lt__(self, __value):
         return (not (self > __value)) and (self != __value)
+    
+    def is_same_suit(self, __value):
+        """
+        checks if the instanse suit same as passed card suit
+
+        returns:
+            bool: true is both suit are same
+        """
+        return self.suit == __value.suit

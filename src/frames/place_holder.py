@@ -22,7 +22,7 @@ class PlaceHolder:
         self.option_lst = [["1", "Go back", self.kill]]
         self.menu = Menu(
                          "Place Holder",
-                         "this is juast a place holder frame",
+                         "this feature will come soon...",
                          self.option_lst,
                         )
 
